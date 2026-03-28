@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politique de confidentialité – Budget Tracker</title>
+  <style>
+    :root {
+      --primary: #6366F1;
+      --primary-light: #EEF2FF;
+      --text: #1F2937;
+      --text-secondary: #6B7280;
+      --border: #E5E7EB;
+      --bg: #F9FAFB;
+      --surface: #FFFFFF;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    body.rtl {
+      font-family: 'Segoe UI', 'Arabic Typesetting', Tahoma, Arial, sans-serif;
+      direction: rtl;
+      text-align: right;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    .header .app-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 36px;
+    }
+    .header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .header p {
+      font-size: 15px;
+      opacity: 0.85;
+    }
+
+    /* Lang switcher */
+    .lang-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 20px 24px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .lang-btn {
+      padding: 8px 24px;
+      border-radius: 50px;
+      border: 2px solid var(--border);
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--text-secondary);
+    }
+    .lang-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+    .lang-btn:hover:not(.active) {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Content */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+
+    .effective-date {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    body.rtl .section-header {
+      flex-direction: row-reverse;
+    }
+
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .section h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .section p {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+    .section p:last-child { margin-bottom: 0; }
+
+    .section ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+    body.rtl .section ul {
+      padding-left: 0;
+      padding-right: 20px;
+    }
+    .section ul li {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .highlight-box {
+      background: #F0FDF4;
+      border-left: 4px solid #22C55E;
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin-top: 12px;
+      font-size: 14px;
+      color: #166534;
+      font-weight: 500;
+    }
+    body.rtl .highlight-box {
+      border-left: none;
+      border-right: 4px solid #22C55E;
+      border-radius: 8px 0 0 8px;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, #EEF2FF 0%, #F5F3FF 100%);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      border: 1px solid #C7D2FE;
+    }
+    .contact-card a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .contact-card a:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Language content visibility */
+    .content-fr, .content-ar { display: none; }
+    html[data-lang="fr"] .content-fr { display: block; }
+    html[data-lang="ar"] .content-ar { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="app-icon">💰</div>
+  <h1 class="content-fr">Politique de confidentialité</h1>
+  <h1 class="content-ar">سياسة الخصوصية</h1>
+  <p class="content-fr">Budget Tracker — Gérez vos finances en toute confiance</p>
+  <p class="content-ar">Budget Tracker — أدِر أموالك بكل ثقة</p>
+</div>
+
+<nav class="lang-switcher" role="navigation" aria-label="Language selector">
+  <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">🇫🇷 Français</button>
+  <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">🇲🇦 العربية</button>
+</nav>
+
+<div class="container">
+
+  <div class="effective-date">
+    📅 <span class="content-fr">Dernière mise à jour : 28 mars 2026</span>
+    <span class="content-ar">آخر تحديث: 28 مارس 2026</span>
+  </div>
+
+  <!-- Section 1: Overview -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔒</div>
+      <h2 class="content-fr">Notre engagement envers votre vie privée</h2>
+      <h2 class="content-ar">التزامنا بخصوصيتك</h2>
+    </div>
+    <p class="content-fr">
+      Chez Budget Tracker, la protection de votre vie privée est notre priorité absolue. Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos données lorsque vous utilisez notre application mobile.
+    </p>
+    <p class="content-ar">
+      في Budget Tracker، تُعدّ حماية خصوصيتك أولويتنا القصوى. توضح سياسة الخصوصية هذه كيفية جمع بياناتك واستخدامها وحمايتها عند استخدام تطبيقنا.
+    </p>
+    <div class="highlight-box content-fr">
+      ✅ Budget Tracker ne vend jamais vos données personnelles à des tiers.
+    </div>
+    <div class="highlight-box content-ar">
+      ✅ لا يقوم Budget Tracker ببيع بياناتك الشخصية لأي طرف ثالث.
+    </div>
+  </div>
+
+  <!-- Section 2: Data collected -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">📊</div>
+      <h2 class="content-fr">Données collectées</h2>
+      <h2 class="content-ar">البيانات التي نجمعها</h2>
+    </div>
+    <p class="content-fr"><strong>Données stockées localement sur votre appareil :</strong></p>
+    <p class="content-ar"><strong>البيانات المخزنة محليًا على جهازك:</strong></p>
+    <ul>
+      <li class="content-fr">Transactions financières (montant, catégorie, date, description)</li>
+      <li class="content-ar">المعاملات المالية (المبلغ، الفئة، التاريخ، الوصف)</li>
+      <li class="content-fr">Catégories personnalisées créées par l'utilisateur</li>
+      <li class="content-ar">الفئات المخصصة التي أنشأها المستخدم</li>
+      <li class="content-fr">Paramètres de l'application (devise, budget mensuel, préférences)</li>
+      <li class="content-ar">إعدادات التطبيق (العملة، الميزانية الشهرية، التفضيلات)</li>
+      <li class="content-fr">Données de budget planifiées</li>
+      <li class="content-ar">بيانات الميزانية المخططة</li>
+    </ul>
+    <p class="content-fr" style="margin-top:12px;">
+      <strong>Données de diagnostic (anonymes) :</strong> En cas de plantage, des rapports techniques anonymisés peuvent être envoyés via Sentry pour nous aider à améliorer la stabilité de l'application. Ces rapports ne contiennent aucune donnée financière personnelle.
+    </p>
+    <p class="content-ar" style="margin-top:12px;">
+      <strong>بيانات التشخيص (مجهولة المصدر):</strong> في حال حدوث عطل، قد تُرسل تقارير تقنية مجهولة المصدر عبر Sentry لمساعدتنا في تحسين استقرار التطبيق. لا تحتوي هذه التقارير على أي بيانات مالية شخصية.
+    </p>
+  </div>
+
+  <!-- Section 3: Local storage -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">📱</div>
+      <h2 class="content-fr">Stockage local uniquement</h2>
+      <h2 class="content-ar">التخزين المحلي فقط</h2>
+    </div>
+    <p class="content-fr">
+      Toutes vos données financières sont stockées exclusivement sur votre appareil dans une base de données SQLite locale. <strong>Aucune donnée financière n'est envoyée sur nos serveurs ni sur internet.</strong>
+    </p>
+    <p class="content-ar">
+      جميع بياناتك المالية مخزنة حصريًا على جهازك في قاعدة بيانات SQLite محلية. <strong>لا تُرسل أي بيانات مالية إلى خوادمنا أو عبر الإنترنت.</strong>
+    </p>
+    <div class="highlight-box content-fr">
+      🗑️ La désinstallation de l'application supprime définitivement toutes vos données.
+    </div>
+    <div class="highlight-box content-ar">
+      🗑️ إلغاء تثبيت التطبيق يحذف جميع بياناتك نهائيًا.
+    </div>
+  </div>
+
+  <!-- Section 4: Data sharing -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤝</div>
+      <h2 class="content-fr">Partage des données</h2>
+      <h2 class="content-ar">مشاركة البيانات</h2>
+    </div>
+    <p class="content-fr">
+      Nous ne partageons vos données personnelles avec aucun tiers, sauf dans les cas suivants :
+    </p>
+    <p class="content-ar">
+      لا نشارك بياناتك الشخصية مع أي طرف ثالث، إلا في الحالات التالية:
+    </p>
+    <ul>
+      <li class="content-fr"><strong>Exportation initiée par l'utilisateur :</strong> Vous pouvez exporter vos données en CSV ou JSON. Cette exportation est entièrement sous votre contrôle.</li>
+      <li class="content-ar"><strong>التصدير بمبادرة من المستخدم:</strong> يمكنك تصدير بياناتك بتنسيق CSV أو JSON. هذا التصدير خاضع تمامًا لسيطرتك.</li>
+      <li class="content-fr"><strong>Rapports de plantage (Sentry) :</strong> Rapports anonymes d'erreurs techniques, sans données financières.</li>
+      <li class="content-ar"><strong>تقارير الأعطال (Sentry):</strong> تقارير مجهولة عن الأخطاء التقنية، دون بيانات مالية.</li>
+    </ul>
+  </div>
+
+  <!-- Section 5: Permissions -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔐</div>
+      <h2 class="content-fr">Autorisations requises</h2>
+      <h2 class="content-ar">الأذونات المطلوبة</h2>
+    </div>
+    <p class="content-fr">Budget Tracker demande uniquement les autorisations strictement nécessaires :</p>
+    <p class="content-ar">يطلب Budget Tracker الأذونات الضرورية فقط:</p>
+    <ul>
+      <li class="content-fr"><strong>Stockage :</strong> Pour sauvegarder votre base de données locale et exporter vos fichiers.</li>
+      <li class="content-ar"><strong>التخزين:</strong> لحفظ قاعدة البيانات المحلية وتصدير ملفاتك.</li>
+      <li class="content-fr"><strong>Internet (facultatif) :</strong> Uniquement pour l'envoi des rapports de diagnostic anonymes en cas de plantage.</li>
+      <li class="content-ar"><strong>الإنترنت (اختياري):</strong> فقط لإرسال تقارير التشخيص المجهولة عند حدوث عطل.</li>
+    </ul>
+  </div>
+
+  <!-- Section 6: Security -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🛡️</div>
+      <h2 class="content-fr">Sécurité des données</h2>
+      <h2 class="content-ar">أمان البيانات</h2>
+    </div>
+    <p class="content-fr">
+      Vos données sont protégées par les mécanismes de sécurité intégrés de votre système d'exploitation Android. La base de données SQLite est stockée dans le répertoire privé de l'application, inaccessible aux autres applications sans accès root.
+    </p>
+    <p class="content-ar">
+      تتمتع بياناتك بحماية آليات الأمان المدمجة في نظام تشغيل Android. قاعدة بيانات SQLite مخزنة في الدليل الخاص بالتطبيق، غير قابلة للوصول من تطبيقات أخرى دون صلاحيات الجذر.
+    </p>
+  </div>
+
+  <!-- Section 7: Children -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">👶</div>
+      <h2 class="content-fr">Protection des mineurs</h2>
+      <h2 class="content-ar">حماية القاصرين</h2>
+    </div>
+    <p class="content-fr">
+      Budget Tracker n'est pas destiné aux enfants de moins de 13 ans. Nous ne collectons pas sciemment de données personnelles auprès d'enfants.
+    </p>
+    <p class="content-ar">
+      Budget Tracker غير مخصص للأطفال دون سن 13 عامًا. لا نجمع عن قصد أي بيانات شخصية من الأطفال.
+    </p>
+  </div>
+
+  <!-- Section 8: Changes -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">📝</div>
+      <h2 class="content-fr">Modifications de cette politique</h2>
+      <h2 class="content-ar">تغييرات هذه السياسة</h2>
+    </div>
+    <p class="content-fr">
+      Nous pouvons mettre à jour cette politique de confidentialité périodiquement. Toute modification sera publiée sur cette page avec une nouvelle date d'entrée en vigueur. Nous vous encourageons à consulter régulièrement cette page.
+    </p>
+    <p class="content-ar">
+      قد نقوم بتحديث سياسة الخصوصية هذه بشكل دوري. سيتم نشر أي تغييرات على هذه الصفحة مع تاريخ سريان جديد. نشجعك على مراجعة هذه الصفحة بانتظام.
+    </p>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact-card">
+    <p style="font-size:28px; margin-bottom:12px;">📬</p>
+    <h2 class="content-fr" style="font-size:18px; font-weight:700; margin-bottom:8px;">Nous contacter</h2>
+    <h2 class="content-ar" style="font-size:18px; font-weight:700; margin-bottom:8px;">تواصل معنا</h2>
+    <p class="content-fr" style="font-size:14px; color:#6B7280; margin-bottom:12px;">
+      Pour toute question concernant cette politique de confidentialité :
+    </p>
+    <p class="content-ar" style="font-size:14px; color:#6B7280; margin-bottom:12px;">
+      لأي استفسار يتعلق بسياسة الخصوصية هذه:
+    </p>
+    <a href="mailto:ayar.ayyoub@gmail.com">ayar.ayyoub@gmail.com</a>
+  </div>
+
+</div>
+
+<footer>
+  <span class="content-fr">© 2026 Budget Tracker. Tous droits réservés.</span>
+  <span class="content-ar">© 2026 Budget Tracker. جميع الحقوق محفوظة.</span>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('rtl', lang === 'ar');
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+    localStorage.setItem('privacy-lang', lang);
+  }
+
+  // Init from saved preference or browser language
+  const saved = localStorage.getItem('privacy-lang');
+  const browserLang = navigator.language.startsWith('ar') ? 'ar' : 'fr';
+  setLang(saved || browserLang);
+</script>
+</body>
+</html>
