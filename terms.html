@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conditions d'utilisation – Budget Tracker</title>
+  <style>
+    :root {
+      --primary: #8B5CF6;
+      --primary-light: #F5F3FF;
+      --text: #1F2937;
+      --text-secondary: #6B7280;
+      --border: #E5E7EB;
+      --bg: #F9FAFB;
+      --surface: #FFFFFF;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    body.rtl {
+      font-family: 'Segoe UI', 'Arabic Typesetting', Tahoma, Arial, sans-serif;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    .header .app-icon {
+      width: 72px; height: 72px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 36px;
+    }
+    .header h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+    .header p { font-size: 15px; opacity: 0.85; }
+
+    .lang-switcher {
+      display: flex; justify-content: center; gap: 8px;
+      padding: 20px 24px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .lang-btn {
+      padding: 8px 24px; border-radius: 50px;
+      border: 2px solid var(--border); background: transparent;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: all 0.2s ease; color: var(--text-secondary);
+    }
+    .lang-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .lang-btn:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+
+    .container { max-width: 760px; margin: 0 auto; padding: 32px 24px 64px; }
+
+    .effective-date {
+      background: var(--primary-light); color: var(--primary);
+      border-radius: 8px; padding: 10px 16px;
+      font-size: 13px; font-weight: 600; margin-bottom: 32px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+
+    .section {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 24px; margin-bottom: 16px; border: 1px solid var(--border);
+    }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    body.rtl .section-header { flex-direction: row-reverse; }
+
+    .section-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--primary-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .section h2 { font-size: 17px; font-weight: 700; color: var(--text); }
+    .section p { font-size: 14.5px; color: var(--text-secondary); margin-bottom: 10px; }
+    .section p:last-child { margin-bottom: 0; }
+    .section ul { padding-left: 20px; margin-top: 8px; }
+    body.rtl .section ul { padding-left: 0; padding-right: 20px; }
+    .section ul li { font-size: 14.5px; color: var(--text-secondary); margin-bottom: 6px; }
+
+    .warning-box {
+      background: #FEF3C7; border-left: 4px solid #F59E0B;
+      border-radius: 0 8px 8px 0; padding: 12px 16px;
+      margin-top: 12px; font-size: 14px; color: #92400E; font-weight: 500;
+    }
+    body.rtl .warning-box { border-left: none; border-right: 4px solid #F59E0B; border-radius: 8px 0 0 8px; }
+
+    .contact-card {
+      background: linear-gradient(135deg, #F5F3FF 0%, #EEF2FF 100%);
+      border-radius: var(--radius); padding: 24px; text-align: center; border: 1px solid #DDD6FE;
+    }
+    .contact-card a { color: var(--primary); font-weight: 600; text-decoration: none; }
+    .contact-card a:hover { text-decoration: underline; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--primary); font-size: 14px; font-weight: 600;
+      text-decoration: none; margin-bottom: 24px;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center; padding: 24px;
+      font-size: 13px; color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+    }
+
+    .content-fr, .content-ar { display: none; }
+    html[data-lang="fr"] .content-fr { display: block; }
+    html[data-lang="ar"] .content-ar { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="app-icon">📋</div>
+  <h1 class="content-fr">Conditions d'utilisation</h1>
+  <h1 class="content-ar">شروط الاستخدام</h1>
+  <p class="content-fr">Budget Tracker — Veuillez lire attentivement</p>
+  <p class="content-ar">Budget Tracker — يرجى القراءة بعناية</p>
+</div>
+
+<nav class="lang-switcher" role="navigation" aria-label="Language selector">
+  <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">🇫🇷 Français</button>
+  <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">🇲🇦 العربية</button>
+</nav>
+
+<div class="container">
+
+  <a href="index.html" class="back-link content-fr">← Politique de confidentialité</a>
+  <a href="index.html" class="back-link content-ar">سياسة الخصوصية ←</a>
+
+  <div class="effective-date">
+    📅 <span class="content-fr">Dernière mise à jour : 29 mars 2026</span>
+    <span class="content-ar">آخر تحديث: 29 مارس 2026</span>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤝</div>
+      <h2 class="content-fr">Acceptation des conditions</h2>
+      <h2 class="content-ar">قبول الشروط</h2>
+    </div>
+    <p class="content-fr">En téléchargeant ou en utilisant l'application Budget Tracker, vous acceptez d'être lié par ces conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser l'application.</p>
+    <p class="content-ar">بتنزيل تطبيق Budget Tracker أو استخدامه، فإنك توافق على الالتزام بشروط الاستخدام هذه. إذا كنت لا توافق على هذه الشروط، يرجى عدم استخدام التطبيق.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">📱</div>
+      <h2 class="content-fr">Description de l'application</h2>
+      <h2 class="content-ar">وصف التطبيق</h2>
+    </div>
+    <p class="content-fr">Budget Tracker est une application mobile de gestion des finances personnelles. Elle vous permet de :</p>
+    <p class="content-ar">Budget Tracker هو تطبيق جوال لإدارة الشؤون المالية الشخصية. يتيح لك:</p>
+    <ul>
+      <li class="content-fr">Enregistrer et suivre vos transactions financières</li>
+      <li class="content-ar">تسجيل ومتابعة معاملاتك المالية</li>
+      <li class="content-fr">Créer et gérer des catégories de dépenses</li>
+      <li class="content-ar">إنشاء وإدارة فئات المصروفات</li>
+      <li class="content-fr">Planifier et surveiller votre budget mensuel</li>
+      <li class="content-ar">التخطيط ومراقبة ميزانيتك الشهرية</li>
+      <li class="content-fr">Visualiser des statistiques financières</li>
+      <li class="content-ar">عرض إحصائيات مالية</li>
+      <li class="content-fr">Exporter vos données en CSV ou JSON</li>
+      <li class="content-ar">تصدير بياناتك بتنسيق CSV أو JSON</li>
+    </ul>
+    <p class="content-fr" style="margin-top:12px;">L'application fonctionne entièrement hors ligne. Toutes vos données sont stockées localement sur votre appareil.</p>
+    <p class="content-ar" style="margin-top:12px;">يعمل التطبيق بالكامل دون اتصال بالإنترنت. جميع بياناتك مخزنة محليًا على جهازك.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">✅</div>
+      <h2 class="content-fr">Utilisation autorisée</h2>
+      <h2 class="content-ar">الاستخدام المسموح به</h2>
+    </div>
+    <p class="content-fr">Vous acceptez d'utiliser Budget Tracker uniquement à des fins légales et personnelles. Il vous est interdit de :</p>
+    <p class="content-ar">توافق على استخدام Budget Tracker لأغراض قانونية وشخصية فقط. يُحظر عليك:</p>
+    <ul>
+      <li class="content-fr">Modifier, décompiler ou désassembler l'application</li>
+      <li class="content-ar">تعديل أو فك تشفير أو تفكيك التطبيق</li>
+      <li class="content-fr">Utiliser l'application à des fins commerciales sans autorisation écrite</li>
+      <li class="content-ar">استخدام التطبيق لأغراض تجارية دون إذن كتابي</li>
+      <li class="content-fr">Tenter de contourner les mesures de sécurité</li>
+      <li class="content-ar">محاولة تجاوز إجراءات الأمان</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🗄️</div>
+      <h2 class="content-fr">Responsabilité des données</h2>
+      <h2 class="content-ar">مسؤولية البيانات</h2>
+    </div>
+    <p class="content-fr">Vous êtes seul responsable des données que vous saisissez dans l'application. Budget Tracker ne vérifie pas l'exactitude des informations financières que vous enregistrez.</p>
+    <p class="content-ar">أنت وحدك المسؤول عن البيانات التي تدخلها في التطبيق. لا يتحقق Budget Tracker من دقة المعلومات المالية التي تسجلها.</p>
+    <p class="content-fr">Nous vous recommandons fortement d'effectuer des sauvegardes régulières via la fonction d'exportation.</p>
+    <p class="content-ar">نوصيك بشدة بعمل نسخ احتياطية منتظمة لبياناتك عبر ميزة التصدير.</p>
+    <div class="warning-box content-fr">⚠️ La désinstallation de l'application entraîne la suppression définitive et irréversible de toutes vos données locales.</div>
+    <div class="warning-box content-ar">⚠️ إلغاء تثبيت التطبيق يؤدي إلى حذف جميع بياناتك المحلية بشكل نهائي وغير قابل للاسترداد.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">⚖️</div>
+      <h2 class="content-fr">Limitation de responsabilité</h2>
+      <h2 class="content-ar">تحديد المسؤولية</h2>
+    </div>
+    <p class="content-fr">Budget Tracker est fourni « tel quel », sans garantie d'aucune sorte. Nous ne pouvons être tenus responsables de :</p>
+    <p class="content-ar">يُقدَّم Budget Tracker "كما هو" دون أي ضمان. لا يمكن مساءلتنا عن:</p>
+    <ul>
+      <li class="content-fr">La perte de données suite à une suppression ou un dysfonctionnement</li>
+      <li class="content-ar">فقدان البيانات بسبب الحذف أو الخلل</li>
+      <li class="content-fr">Les décisions financières prises sur la base des données affichées</li>
+      <li class="content-ar">القرارات المالية المتخذة بناءً على البيانات المعروضة</li>
+      <li class="content-fr">Les interruptions ou bugs de l'application</li>
+      <li class="content-ar">انقطاعات التطبيق أو أخطائه</li>
+      <li class="content-fr">Tout dommage indirect résultant de l'utilisation de l'application</li>
+      <li class="content-ar">أي ضرر غير مباشر ناتج عن استخدام التطبيق</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">©️</div>
+      <h2 class="content-fr">Propriété intellectuelle</h2>
+      <h2 class="content-ar">الملكية الفكرية</h2>
+    </div>
+    <p class="content-fr">L'application Budget Tracker, y compris son code source, son design, ses icônes et son contenu, est protégée par les lois sur la propriété intellectuelle. Tous les droits sont réservés.</p>
+    <p class="content-ar">تطبيق Budget Tracker، بما في ذلك كوده المصدري وتصميمه وأيقوناته ومحتواه، محمي بموجب قوانين الملكية الفكرية. جميع الحقوق محفوظة.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔄</div>
+      <h2 class="content-fr">Modifications des conditions</h2>
+      <h2 class="content-ar">تعديل الشروط</h2>
+    </div>
+    <p class="content-fr">Nous nous réservons le droit de modifier ces conditions à tout moment. Les modifications seront publiées dans l'application et sur cette page. En continuant à utiliser l'application après une mise à jour, vous acceptez les nouvelles conditions.</p>
+    <p class="content-ar">نحتفظ بحق تعديل هذه الشروط في أي وقت. ستُنشر التعديلات في التطبيق وعلى هذه الصفحة. باستمرارك في استخدام التطبيق بعد أي تحديث، فإنك تقبل الشروط الجديدة.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🌍</div>
+      <h2 class="content-fr">Droit applicable</h2>
+      <h2 class="content-ar">القانون المطبق</h2>
+    </div>
+    <p class="content-fr">Ces conditions sont régies par le droit marocain. Tout litige sera soumis à la compétence exclusive des tribunaux compétents du Maroc.</p>
+    <p class="content-ar">تخضع هذه الشروط للقانون المغربي. يختص بالفصل في أي نزاع المحاكم المختصة في المغرب.</p>
+  </div>
+
+  <div class="contact-card">
+    <p style="font-size:28px; margin-bottom:12px;">📬</p>
+    <h2 class="content-fr" style="font-size:18px; font-weight:700; margin-bottom:8px;">Nous contacter</h2>
+    <h2 class="content-ar" style="font-size:18px; font-weight:700; margin-bottom:8px;">تواصل معنا</h2>
+    <p class="content-fr" style="font-size:14px; color:#6B7280; margin-bottom:12px;">Pour toute question relative à ces conditions :</p>
+    <p class="content-ar" style="font-size:14px; color:#6B7280; margin-bottom:12px;">لأي استفسار يتعلق بهذه الشروط:</p>
+    <a href="mailto:ayar.ayyoub@gmail.com">ayar.ayyoub@gmail.com</a>
+  </div>
+
+</div>
+
+<footer>
+  <span class="content-fr">© 2026 Budget Tracker. Tous droits réservés.</span>
+  <span class="content-ar">© 2026 Budget Tracker. جميع الحقوق محفوظة.</span>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('rtl', lang === 'ar');
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+    localStorage.setItem('privacy-lang', lang);
+  }
+  const saved = localStorage.getItem('privacy-lang');
+  const browserLang = navigator.language.startsWith('ar') ? 'ar' : 'fr';
+  setLang(saved || browserLang);
+</script>
+</body>
+</html>
